@@ -231,7 +231,7 @@
     if (desde) reproductor.seekTo(desde, true);
     reproductor.unMute();
     reproductor.playVideo();
-    if (!datos.empezo) { datos.empezo = true; guardar(); evento("empezo_video"); }
+    if (!datos.empezo) { datos.empezo = true; guardar(); setTimeout(() => evento("empezo_video"), 3000); } // después del registro
     // Si el navegador no deja arrancar con sonido, arranca mudo y pide un toque.
     setTimeout(() => {
       if (reproductor.getPlayerState() !== YT.PlayerState.PLAYING) { reproductor.mute(); reproductor.playVideo(); }
