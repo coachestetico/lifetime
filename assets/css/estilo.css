@@ -258,6 +258,7 @@ section:not(.vsl) .eyebrow::before, section:not(.vsl) .eyebrow::after { content:
 .barra-fija-sub { font-size: 12px; opacity: .8; }
 .barra-fija .boton { min-height: 46px; padding: 10px 20px; font-size: 15px; white-space: nowrap; }
 body.con-barra .wsp-flotante { bottom: 76px; }
+body:has(.puerta:not([hidden])) .wsp-flotante { display: none; } /* no tapa el formulario */
 
 @media (max-width: 820px) {
   .precio-sec { grid-template-columns: 1fr; }
