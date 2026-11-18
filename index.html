@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Membresía Lifetime · Coach Estético</title>
+  <meta name="description" content="Todo Coach Estético en tus manos de por vida: +64 formaciones y todos los cursos que vendrán, con un solo pago.">
+  <meta property="og:title" content="Membresía Lifetime · Coach Estético">
+  <meta property="og:description" content="Mira el video y conoce la oferta Lifetime.">
+  <meta property="og:image" content="assets/img/lifetime-portada.webp">
+  <meta name="theme-color" content="#f5eee6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <header class="barra">
+    <img src="assets/img/logo-coach.png" alt="Coach Estético" class="logo" width="120" height="86">
+    <span class="barra-marca">Membresía <strong>LIFETIME</strong></span>
+  </header>
+
+  <main>
+    <!-- 1. Video -->
+    <section class="vsl">
+      <p class="eyebrow">Membresía Lifetime · Coach Estético</p>
+      <h1 id="titulo"></h1>
+      <p class="bajada" id="bajada"></p>
+
+      <div class="pantalla" id="pantalla">
+        <div class="marco-video"><div id="reproductor"></div></div>
+        <button type="button" class="capa-video" id="capa-video" aria-label="Pausar o reproducir" hidden>
+          <span class="icono-play" id="icono-play" hidden>▶</span>
+        </button>
+        <button type="button" class="sonido" id="sonido" hidden>🔊 Toca para activar el sonido</button>
+        <div class="progreso" id="progreso" hidden><span id="progreso-barra"></span></div>
+
+        <form class="puerta" id="puerta" novalidate>
+          <img class="puerta-fondo" id="puerta-fondo" alt="">
+          <div class="puerta-tarjeta">
+            <p class="puerta-titulo">Mira el video completo</p>
+            <p class="puerta-texto">Déjanos tu nombre y tu WhatsApp, y empieza ahora.</p>
+            <label class="solo-lector" for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre" required>
+            <div class="fila-tel">
+              <label class="solo-lector" for="pais">País</label>
+              <select id="pais" name="pais" aria-label="País"></select>
+              <label class="solo-lector" for="telefono">WhatsApp</label>
+              <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Tu WhatsApp" required>
+            </div>
+            <input class="trampa" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="error" id="error" hidden></p>
+            <button class="boton" type="submit">Ver el video ▶</button>
+            <p class="privado">🔒 Tus datos son privados. No enviamos spam.</p>
+          </div>
+        </form>
+
+        <div class="continuar" id="continuar" hidden>
+          <p class="puerta-titulo" id="continuar-titulo">Hola de nuevo</p>
+          <button class="boton" type="button" id="continuar-boton">Seguir viendo ▶</button>
+        </div>
+      </div>
+
+      <p class="aviso-oferta" id="aviso-oferta">🔒 La oferta se habilita al terminar el video.</p>
+      <a class="boton boton-grande ver-oferta" id="ver-oferta" href="#precio" hidden>Ver la oferta Lifetime ↓</a>
+
+      <ul class="cifras">
+        <li><strong>+3.200</strong><span>alumnas activas</span></li>
+        <li><strong>+64</strong><span>formaciones</span></li>
+        <li><strong>10 años</strong><span>formando profesionales</span></li>
+      </ul>
+    </section>
+
+    <!-- 2. Oferta (aparece al terminar el video) -->
+    <div id="oferta" hidden>
+      <section class="precio-sec" id="precio">
+        <div class="tarjeta-precio">
+          <p class="sello">Oferta Lifetime</p>
+          <h2>Todo Coach Estético.<br>Para siempre.</h2>
+          <p class="precio-sub">Un solo pago. Todos los cursos de hoy y todos los que vendrán.</p>
+
+          <div class="cupos" id="cupos">
+            <p><span class="punto"></span> Quedan <strong id="cupos-quedan"></strong> de <span id="cupos-total"></span> cupos a este precio esta semana</p>
+            <div class="cupos-barra"><span id="cupos-barra"></span></div>
+          </div>
+
+          <p class="lista">Precio regular <s id="lista"></s></p>
+          <p class="precio"><span id="precio-valor"></span> <span class="descuento" id="descuento"></span></p>
+          <p class="precio-detalle" id="precio-detalle" hidden></p>
+          <p class="pago-unico">Pago único · Acceso de por vida · Sin suscripciones</p>
+
+          <div class="planes" id="planes"></div>
+          <p class="nota" id="nota"></p>
+          <button type="button" class="enlace" id="otro-pais" hidden></button>
+
+          <ul class="confianza">
+            <li>🔒 Pago seguro</li>
+            <li>⚡ Acceso inmediato</li>
+            <li>🛡️ Garantía de 7 días</li>
+          </ul>
+        </div>
+
+        <div class="incluye">
+          <h3>Lo que recibes hoy</h3>
+          <ul>
+            <li><b>+64 formaciones</b> en HD, disponibles 24/7</li>
+            <li><b>Todos los cursos futuros</b> incluidos, sin pagar de nuevo</li>
+            <li><b>Certificación</b> por cada curso completado</li>
+            <li><b>Protocolos clínicos</b>, guías paso a paso y material en PDF</li>
+            <li><b>Tutor online</b> y grupo de WhatsApp para tus dudas</li>
+            <li><b>Comunidad Lifetime</b> para seguir creciendo acompañada</li>
+          </ul>
+          <div class="ahorro">
+            <p>Si compraras el catálogo curso por curso</p>
+            <p class="ahorro-valor"><s>USD 5.505</s></p>
+            <p class="ahorro-pie">Con Lifetime pagas una vez y entra todo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Catálogo -->
+      <section class="catalogo" id="catalogo">
+        <p class="eyebrow">Catálogo completo</p>
+        <h2>Esto es lo que te llevas</h2>
+        <p class="sub">6 categorías · un solo pago · para siempre. Toca una categoría para ver sus cursos.</p>
+        <div class="categorias" id="categorias"></div>
+        <div class="cursos" id="cursos" hidden></div>
+        <p class="futuros">+ Todos los cursos que lancemos de ahora en adelante</p>
+      </section>
+
+      <!-- 4. Testimonios -->
+      <section class="testimonios">
+        <p class="eyebrow">Alumnas Lifetime</p>
+        <h2>Lo que dicen quienes ya lo tienen</h2>
+        <div class="carrusel">
+          <figure><blockquote>“Me costó mucho tomar la decisión de adquirir el Lifetime, pero hoy lo único que lamento es no haberlo hecho mucho antes. Ha sido una de las mejores inversiones para mi negocio.”</blockquote><figcaption>Denisse</figcaption></figure>
+          <figure><blockquote>“El Lifetime de Coach Estético ha sido la mejor inversión para mi negocio. Vale la pena cada céntimo.”</blockquote><figcaption>Alumna Lifetime</figcaption></figure>
+          <figure><blockquote>“Hace 25 años que trabajo en estética y realmente me encanta todo lo que nos ofrece Coach Estético. Están llevando nuestra profesión a otro nivel.”</blockquote><figcaption>Alumna Lifetime</figcaption></figure>
+          <figure><blockquote>“Estoy tranquila de que mis clases están seguras y que voy estudiando a mi ritmo. Las clases son de una calidad excelente.”</blockquote><figcaption>Jackeline Carrasqueros</figcaption></figure>
+          <figure><blockquote>“Aunque voy súper atrasada, sé que tengo allí todas las herramientas para ponerme al día.”</blockquote><figcaption>Alumna Lifetime</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 5. Garantía y dudas -->
+      <section class="garantia">
+        <div class="garantia-sello">7<span>días</span></div>
+        <div>
+          <h2>Garantía de 7 días</h2>
+          <p>Entra, recorre la plataforma y mira las clases. Si en 7 días sientes que no es para ti, te devolvemos el dinero.</p>
+        </div>
+      </section>
+
+      <section class="faq">
+        <h2>Preguntas frecuentes</h2>
+        <details><summary>¿Es un pago único?</summary><p>Sí. Pagas una vez y el acceso es tuyo de por vida, sin suscripciones ni renovaciones.</p></details>
+        <details><summary>¿Los cursos nuevos están incluidos?</summary><p>Sí. Cada formación nueva que produzca Coach Estético se suma a tu cuenta sin costo extra.</p></details>
+        <details><summary>¿Cómo y cuándo accedo?</summary><p>Después del pago te llega el acceso al correo. La plataforma está online 24/7 y avanzas a tu ritmo, desde el celular o la computadora.</p></details>
+        <details><summary>¿Recibo certificado?</summary><p>Sí, un certificado por cada curso que completes.</p></details>
+        <details><summary>¿Qué no incluye?</summary><p>Incluye solo las formaciones producidas por Coach Estético. No incluye eventos presenciales ni formaciones de terceros invitados que no formen parte del catálogo oficial.</p></details>
+      </section>
+
+      <section class="cierre">
+        <h2>“Todo Coach Estético en tus manos de por vida”</h2>
+        <a class="boton boton-grande" href="#precio">Quiero Lifetime</a>
+        <a class="enlace-wsp" id="wsp-cierre" target="_blank" rel="noopener">¿Tienes dudas? Escríbenos por WhatsApp</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>© Coach Estético · Dianela Draganov</p>
+  </footer>
+
+  <a class="wsp-flotante" id="wsp" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.5.7 4.8 1.9 6.8L3 29l6.8-2.1c1.9 1 4 1.6 6.2 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 1.2 1.3-3.9-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.5 9.9 10.2 5.3 16 5.3s10.5 4.6 10.5 10.4S21.8 26.2 16 26.2zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
+  </a>
+
+  <div class="barra-fija" id="barra-fija" hidden>
+    <div><span class="barra-fija-precio" id="barra-fija-precio"></span><span class="barra-fija-sub">Oferta Lifetime</span></div>
+    <a class="boton" href="#precio">Quiero Lifetime</a>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/landing.js"></script>
+</body>
+</html>

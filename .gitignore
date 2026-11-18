@@ -1,0 +1,6 @@
+# Solo se publica la página y assets/. La planilla y el material quedan en la PC.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/assets/
