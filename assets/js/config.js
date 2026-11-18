@@ -87,6 +87,6 @@ const CONFIG = {
       "Técnicas en Peeling Químico", "Técnicas en Pieles Acneicas", "Técnicas en Rejuvenecimiento", "Domina Top 7 Ácidos"] }
   ],
 
-  /* Planilla (Apps Script). Vacía = no guarda nada (sirve para probar). */
-  registroUrl: ""
+  /* Planilla "Leads VSL Lifetime" (Apps Script en ventascoach5). Vacía = no guarda nada. */
+  registroUrl: "https://script.google.com/macros/s/AKfycbw2YV3B5ylL2mjio0BV6__9CazHQChCDpN0Fzcnbt2N9u4Uo6w_Qg-kcXdHTltk9QiPHw/exec"
 };
