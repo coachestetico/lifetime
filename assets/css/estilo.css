@@ -64,14 +64,31 @@ section > * { max-width: var(--ancho); margin-left: auto; margin-right: auto; }
 .barra-marca strong { font-family: var(--alta); font-size: 18px; letter-spacing: 0.08em; color: var(--vino); }
 
 /* 1. Video */
-.vsl { padding-top: 8px; text-align: center; }
-.vsl h1 { font-size: clamp(28px, 6.4vw, 50px); margin-top: 10px; color: var(--tinta); }
-.vsl h1 em { font-style: normal; color: var(--rojo); }
-.bajada { font-size: clamp(16px, 2.4vw, 19px); color: var(--suave); max-width: 680px; margin-top: 12px; }
+.vsl {
+  position: relative; overflow: hidden; padding-top: 18px; text-align: center;
+  background:
+    radial-gradient(70% 55% at 50% 8%, rgba(255, 252, 247, 0.95) 0%, rgba(255, 252, 247, 0) 70%),
+    linear-gradient(180deg, #f8f2eb 0%, #efe2d6 100%);
+}
+.vsl::before {
+  content: "LIFETIME"; position: absolute; left: 50%; top: 6px; transform: translateX(-50%);
+  font-family: var(--alta); font-weight: 700; font-size: clamp(110px, 27vw, 330px); line-height: 1;
+  letter-spacing: 0.02em; color: rgba(78, 12, 21, 0.05); white-space: nowrap; pointer-events: none;
+}
+.vsl > * { position: relative; }
+.vsl .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(196, 22, 28, 0.18); font-size: 12px;
+}
+.vsl .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--rojo); }
+.vsl h1 { font-size: clamp(30px, 6.4vw, 54px); margin-top: 18px; color: var(--tinta); letter-spacing: -0.025em; }
+.vsl h1 em { display: block; font-family: "Playfair Display", Georgia, serif; font-style: italic; font-weight: 700; color: var(--rojo); letter-spacing: -0.01em; margin-top: 4px; }
+.bajada { font-size: clamp(16px, 2.4vw, 19px); color: var(--suave); max-width: 640px; margin-top: 14px; }
 
 .pantalla {
-  position: relative; max-width: 860px; margin-top: 26px; border-radius: var(--radio); overflow: hidden;
-  background: var(--vino-2); box-shadow: 0 30px 60px -30px rgba(47, 7, 13, 0.6);
+  position: relative; max-width: 860px; margin-top: 30px; border-radius: 22px; overflow: hidden;
+  background: var(--vino-2); border: 6px solid var(--blanco);
+  box-shadow: 0 1px 0 1px rgba(78, 12, 21, 0.06), 0 40px 80px -40px rgba(47, 7, 13, 0.7);
   aspect-ratio: 16 / 9;
 }
 .marco-video, .marco-video iframe, #reproductor { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -87,6 +104,9 @@ section > * { max-width: var(--ancho); margin-left: auto; margin-right: auto; }
 .progreso span { display: block; height: 100%; width: 0; background: var(--rojo-claro); transition: width .9s linear; }
 
 .puerta, .continuar { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; padding: 16px; }
+/* Mientras se ve el formulario, la caja toma su alto (así entra completo en cualquier pantalla). */
+.pantalla:has(.puerta:not([hidden])) { aspect-ratio: auto; }
+.puerta { position: relative; padding: 34px 16px; }
 .puerta-fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; filter: blur(3px) brightness(0.55); transform: scale(1.06); }
 .puerta-tarjeta {
   position: relative; width: min(420px, 100%); background: rgba(255, 253, 250, 0.97); color: var(--tinta);
@@ -95,25 +115,41 @@ section > * { max-width: var(--ancho); margin-left: auto; margin-right: auto; }
 }
 .puerta-titulo { font-weight: 800; font-size: 21px; line-height: 1.2; }
 .puerta-texto { font-size: 15px; color: var(--suave); margin-bottom: 4px; }
+.puerta-tarjeta { text-align: left; }
+.puerta-titulo, .puerta-texto, .privado, .error { text-align: center; }
+.etiqueta { font-size: 13px; font-weight: 700; color: var(--tinta); margin: 2px 0 -6px 2px; }
 .puerta input, .puerta select {
-  width: 100%; min-height: 50px; padding: 12px 14px; border: 1.5px solid var(--linea); border-radius: 12px;
+  width: 100%; min-height: 50px; padding: 12px 14px; border: 1.5px solid rgba(31, 21, 19, 0.16); border-radius: 12px;
   background: #fff; color: var(--tinta); font: 500 16px var(--sans);
 }
+.puerta select {
+  appearance: none; cursor: pointer; padding-right: 40px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c4161c' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 16px center;
+}
 .puerta input:focus, .puerta select:focus { outline: 2px solid var(--rojo); border-color: transparent; }
-.fila-tel { display: grid; grid-template-columns: 118px 1fr; gap: 8px; }
+.tel { display: flex; align-items: stretch; border: 1.5px solid rgba(31, 21, 19, 0.16); border-radius: 12px; background: #fff; overflow: hidden; }
+.tel:focus-within { outline: 2px solid var(--rojo); border-color: transparent; }
+.tel-codigo { display: grid; place-items: center; padding: 0 14px; background: var(--fondo); color: var(--vino); font-weight: 800; border-right: 1.5px solid rgba(31, 21, 19, 0.1); }
+.tel input { border: 0; border-radius: 0; min-width: 0; }
+.tel input:focus { outline: none; }
 .puerta .boton { width: 100%; margin-top: 4px; }
 .error { color: var(--rojo); font-size: 14px; font-weight: 600; }
 .privado { font-size: 12px; color: var(--suave); }
 .continuar { background: rgba(47, 7, 13, 0.82); color: #fff; gap: 14px; align-content: center; }
 
-.aviso-oferta { margin-top: 16px; font-size: 15px; color: var(--suave); }
-.ver-oferta { margin-top: 20px; animation: aparece .5s ease-out; }
+.ver-oferta { margin-top: 26px; animation: aparece .5s ease-out; }
 @keyframes aparece { from { opacity: 0; transform: translateY(10px); } }
 
-.cifras { list-style: none; padding: 0; margin-top: 30px; display: flex; justify-content: center; gap: clamp(18px, 6vw, 60px); }
-.cifras li { display: grid; }
-.cifras strong { font-family: var(--alta); font-size: clamp(26px, 5vw, 36px); color: var(--vino); line-height: 1.1; }
-.cifras span { font-size: 13px; color: var(--suave); }
+.cifras {
+  display: grid; grid-template-columns: repeat(3, 1fr); max-width: 720px; margin-top: 34px; padding: 20px 6px;
+  background: var(--blanco); border: 1px solid rgba(78, 12, 21, 0.08); border-radius: 22px;
+  box-shadow: 0 24px 50px -34px rgba(47, 7, 13, 0.55);
+}
+.cifras div { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 2px 10px; }
+.cifras div + div { border-left: 1px solid rgba(78, 12, 21, 0.1); }
+.cifras strong { font-family: var(--alta); font-weight: 700; font-size: clamp(30px, 6vw, 42px); line-height: 1; color: var(--vino); letter-spacing: 0.01em; }
+.cifras strong::after { content: ""; display: block; width: 26px; height: 3px; border-radius: 3px; background: var(--rojo); margin: 8px auto 0; }
+.cifras span { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--suave); line-height: 1.35; text-align: center; }
 
 /* 2. Oferta */
 .precio-sec { display: grid; gap: 24px; grid-template-columns: 1.1fr 1fr; align-items: start; max-width: calc(var(--ancho) + 32px); margin: 0 auto; scroll-margin-top: 10px; }
@@ -172,14 +208,22 @@ section > * { max-width: var(--ancho); margin-left: auto; margin-right: auto; }
 .futuros { text-align: center; margin-top: 18px; font-weight: 800; color: var(--vino); }
 
 /* 4. Testimonios */
-.carrusel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(270px, 1fr); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 26px 2px 12px; max-width: none; }
+.carrusel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(270px, 1fr); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 26px 2px 14px; scrollbar-width: thin; scrollbar-color: rgba(196, 22, 28, 0.4) transparent; }
 .carrusel figure { margin: 0; scroll-snap-align: start; background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
-.carrusel blockquote { margin: 0; font-size: 15.5px; }
+.carrusel figure { border-top: 3px solid var(--rojo); box-shadow: 0 18px 40px -32px rgba(47, 7, 13, 0.5); }
+.carrusel figure::before { content: "“"; font-family: "Playfair Display", Georgia, serif; font-size: 64px; line-height: .5; color: var(--rojo); height: 24px; }
+.carrusel blockquote { margin: 0; font-size: 15.5px; flex: 1; }
 .carrusel figcaption { font-weight: 800; color: var(--vino); font-size: 14px; }
 .carrusel figcaption::before { content: "★★★★★ "; color: #e0a526; letter-spacing: 1px; }
 
 /* 5. Garantía, FAQ, cierre */
-.garantia { display: flex; align-items: center; gap: 22px; max-width: 760px; margin: 0 auto; }
+section:not(.vsl) .eyebrow { display: flex; align-items: center; justify-content: center; gap: 12px; }
+section:not(.vsl) .eyebrow::before, section:not(.vsl) .eyebrow::after { content: ""; width: 28px; height: 1.5px; background: currentColor; opacity: .45; }
+.garantia {
+  display: flex; align-items: center; gap: 22px; max-width: 760px; margin: 48px auto 0; padding: 28px;
+  background: var(--blanco); border: 1px solid rgba(78, 12, 21, 0.08); border-radius: 24px;
+  box-shadow: 0 24px 50px -36px rgba(47, 7, 13, 0.55);
+}
 .garantia > * { margin: 0; }
 .garantia-sello { flex: none; width: 104px; height: 104px; border-radius: 50%; border: 3px dashed var(--rojo); display: grid; place-content: center; text-align: center; font-family: var(--alta); font-size: 42px; color: var(--rojo); line-height: 1; }
 .garantia-sello span { font-size: 15px; letter-spacing: .1em; text-transform: uppercase; }
@@ -222,8 +266,12 @@ body.con-barra .wsp-flotante { bottom: 76px; }
 @media (max-width: 560px) {
   section { padding: 44px 16px; }
   .vsl { padding-top: 4px; }
-  .pantalla { margin-left: -16px; margin-right: -16px; border-radius: 0; }
-  .pantalla:has(.puerta:not([hidden])) { aspect-ratio: auto; min-height: 420px; }
+  .pantalla { margin-left: -16px; margin-right: -16px; border-radius: 0; border-width: 0; }
+  .puerta { padding: 22px 16px; }
+  .cifras { padding: 16px 0; }
+  .cifras div { padding: 2px 6px; }
+  .cifras span { font-size: 10.5px; letter-spacing: .06em; }
+  .garantia { margin: 32px 16px 0; padding: 24px 20px; }
   .cursos ul { columns: 1; }
   .categoria { padding: 14px; }
   .categoria small { display: none; }

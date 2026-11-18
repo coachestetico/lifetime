@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#f5eee6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/estilo.css">
 </head>
 <body>
@@ -40,13 +40,14 @@
           <div class="puerta-tarjeta">
             <p class="puerta-titulo">Mira el video completo</p>
             <p class="puerta-texto">Déjanos tu nombre y tu WhatsApp, y empieza ahora.</p>
-            <label class="solo-lector" for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre" required>
-            <div class="fila-tel">
-              <label class="solo-lector" for="pais">País</label>
-              <select id="pais" name="pais" aria-label="País"></select>
-              <label class="solo-lector" for="telefono">WhatsApp</label>
-              <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Tu WhatsApp" required>
+            <label class="etiqueta" for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" autocomplete="given-name" placeholder="Ej.: María" required>
+            <label class="etiqueta" for="pais">Tu país</label>
+            <select id="pais" name="pais"></select>
+            <label class="etiqueta" for="telefono">Tu WhatsApp</label>
+            <div class="tel">
+              <span class="tel-codigo" id="tel-codigo">+54</span>
+              <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Número de celular" required>
             </div>
             <input class="trampa" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
             <p class="error" id="error" hidden></p>
@@ -61,14 +62,13 @@
         </div>
       </div>
 
-      <p class="aviso-oferta" id="aviso-oferta">🔒 La oferta se habilita al terminar el video.</p>
       <a class="boton boton-grande ver-oferta" id="ver-oferta" href="#precio" hidden>Ver la oferta Lifetime ↓</a>
 
-      <ul class="cifras">
-        <li><strong>+3.200</strong><span>alumnas activas</span></li>
-        <li><strong>+64</strong><span>formaciones</span></li>
-        <li><strong>10 años</strong><span>formando profesionales</span></li>
-      </ul>
+      <div class="cifras">
+        <div><strong>+3.200</strong><span>alumnas<br>activas</span></div>
+        <div><strong>+64</strong><span>formaciones<br>incluidas</span></div>
+        <div><strong>+10</strong><span>años formando<br>profesionales</span></div>
+      </div>
     </section>
 
     <!-- 2. Oferta (aparece al terminar el video) -->
@@ -130,7 +130,7 @@
 
       <!-- 4. Testimonios -->
       <section class="testimonios">
-        <p class="eyebrow">Alumnas Lifetime</p>
+        <p class="eyebrow">Testimonios</p>
         <h2>Lo que dicen quienes ya lo tienen</h2>
         <div class="carrusel">
           <figure><blockquote>“Me costó mucho tomar la decisión de adquirir el Lifetime, pero hoy lo único que lamento es no haberlo hecho mucho antes. Ha sido una de las mejores inversiones para mi negocio.”</blockquote><figcaption>Denisse</figcaption></figure>

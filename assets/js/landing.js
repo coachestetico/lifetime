@@ -2,7 +2,7 @@
    y seguimiento de cada paso en la planilla. */
 (function () {
   const $ = id => document.getElementById(id);
-  const CLAVE = "oferta-lifetime:datos";
+  const CLAVE = "lifetime:datos";
   const PRUEBA = new URLSearchParams(location.search).get("prueba"); // ?prueba=oferta abre la oferta sin ver el video
 
   const PAISES = [
@@ -162,7 +162,6 @@
   function abrirOferta(porVideo) {
     const yaEstaba = !$("oferta").hidden;
     $("oferta").hidden = false;
-    $("aviso-oferta").hidden = true;
     $("ver-oferta").hidden = false;
     $("barra-fija").hidden = false;
     document.body.classList.add("con-barra");
@@ -286,11 +285,17 @@
   PAISES.forEach(([cod, nombre, tel]) => {
     const o = document.createElement("option");
     o.value = cod;
-    o.textContent = `${nombre} ${tel === "+" ? "" : tel}`.trim();
+    o.textContent = tel === "+" ? nombre : `${nombre} (${tel})`;
     select.appendChild(o);
   });
+  function pintarCodigo() {
+    const tel = (PAISES.find(p => p[0] === select.value) || [])[2] || "+";
+    $("tel-codigo").textContent = tel;
+    $("telefono").placeholder = tel === "+" ? "Código de país y número" : "Número de celular";
+  }
   select.value = paisPorZona() || "AR";
-  select.addEventListener("change", () => fijarPais(select.value));
+  pintarCodigo();
+  select.addEventListener("change", () => { pintarCodigo(); fijarPais(select.value); });
 
   $("puerta").addEventListener("submit", e => {
     e.preventDefault();
